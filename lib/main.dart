@@ -1,39 +1,39 @@
+import 'package:active_fit/core/data/data_source/user_data_source.dart';
+import 'package:active_fit/core/data/repository/config_repository.dart';
+import 'package:active_fit/core/domain/entity/app_theme_entity.dart';
+import 'package:active_fit/core/presentation/main_screen.dart';
+import 'package:active_fit/core/presentation/widgets/image_full_screen.dart';
+import 'package:active_fit/core/styles/color_schemes.dart';
+import 'package:active_fit/core/styles/fonts.dart';
+import 'package:active_fit/core/utils/env.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/core/utils/logger_config.dart';
+import 'package:active_fit/core/utils/navigation_options.dart';
+import 'package:active_fit/core/utils/theme_mode_provider.dart';
+import 'package:active_fit/features/activity_detail/activity_detail_screen.dart';
+import 'package:active_fit/features/add_activity/presentation/add_activity_screen.dart';
+import 'package:active_fit/features/add_meal/presentation/add_meal_screen.dart';
+import 'package:active_fit/features/edit_meal/presentation/edit_meal_screen.dart';
+import 'package:active_fit/features/login/login_screen.dart';
+import 'package:active_fit/features/meal_detail/meal_detail_screen.dart';
+import 'package:active_fit/features/onboarding/onboarding_screen.dart';
+import 'package:active_fit/features/register/Register_screen.dart';
+import 'package:active_fit/features/scanner/scanner_screen.dart';
+import 'package:active_fit/features/settings/settings_screen.dart';
+import 'package:active_fit/generated/l10n.dart';
+import 'package:active_fit/model/constants/bloc_ofserver.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logging/logging.dart';
-import 'package:opennutritracker/core/data/data_source/user_data_source.dart';
-import 'package:opennutritracker/core/data/repository/config_repository.dart';
-import 'package:opennutritracker/core/domain/entity/app_theme_entity.dart';
-import 'package:opennutritracker/core/presentation/main_screen.dart';
-import 'package:opennutritracker/core/presentation/widgets/image_full_screen.dart';
-import 'package:opennutritracker/core/styles/color_schemes.dart';
-import 'package:opennutritracker/core/styles/fonts.dart';
-import 'package:opennutritracker/core/utils/env.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/core/utils/logger_config.dart';
-import 'package:opennutritracker/core/utils/navigation_options.dart';
-import 'package:opennutritracker/core/utils/theme_mode_provider.dart';
-import 'package:opennutritracker/features/activity_detail/activity_detail_screen.dart';
-import 'package:opennutritracker/features/add_meal/presentation/add_meal_screen.dart';
-import 'package:opennutritracker/features/add_activity/presentation/add_activity_screen.dart';
-import 'package:opennutritracker/features/edit_meal/presentation/edit_meal_screen.dart';
-import 'package:opennutritracker/features/login/login_screen.dart';
-import 'package:opennutritracker/features/onboarding/onboarding_screen.dart';
-import 'package:opennutritracker/features/register/Register_screen.dart';
-import 'package:opennutritracker/features/scanner/scanner_screen.dart';
-import 'package:opennutritracker/features/meal_detail/meal_detail_screen.dart';
-import 'package:opennutritracker/features/settings/settings_screen.dart';
-import 'package:opennutritracker/generated/l10n.dart';
-import 'package:opennutritracker/model/constants/bloc_ofserver.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
+  await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
   LoggerConfig.intiLogger();
   await initLocator();
@@ -69,12 +69,12 @@ void runAppWithChangeNotifiers(
         bool userInitialized, AppThemeEntity savedAppTheme) =>
     runApp(ChangeNotifierProvider(
         create: (_) => ThemeModeProvider(appTheme: savedAppTheme),
-        child: OpenNutriTrackerApp(userInitialized: userInitialized)));
+        child: ACtiveFitApp(userInitialized: userInitialized)));
 
-class OpenNutriTrackerApp extends StatelessWidget {
+class ACtiveFitApp extends StatelessWidget {
   final bool userInitialized;
 
-  const OpenNutriTrackerApp({super.key, required this.userInitialized});
+  const ACtiveFitApp({super.key, required this.userInitialized});
 
   @override
   Widget build(BuildContext context) {
@@ -82,15 +82,17 @@ class OpenNutriTrackerApp extends StatelessWidget {
       onGenerateTitle: (context) => S.of(context).appTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: lightColorScheme,
-          textTheme: appTextTheme),
+        useMaterial3: true,
+        colorScheme: lightColorScheme,
+        textTheme: appTextTheme,
+      ),
       darkTheme: ThemeData(
           useMaterial3: true,
           colorScheme: darkColorScheme,
           textTheme: appTextTheme),
       themeMode: Provider.of<ThemeModeProvider>(context).themeMode,
-      localizationsDelegates: const [
+      // emeModeProvider > (context).themeMode,
+      localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
