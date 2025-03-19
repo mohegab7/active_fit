@@ -2,12 +2,11 @@ import 'dart:io' show Platform;
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppConst {
-  static const userAgentAppName = "OpenNutriTracker";
+  static const userAgentAppName = "active_fit";
   static const platformNameAndroid = "Android";
   static const platformNameIOS = "iOS";
-  static const reportErrorEmail = "opennutritracker-dev@pm.me";
-  static const sourceCodeUrl =
-      "https://github.com/simonoppowa/OpenNutriTracker";
+  static const reportErrorEmail = "active_fit-dev@pm.me";
+  static const sourceCodeUrl = "https://github.com/simonoppowa/active_fit";
 
   static Future<String> getVersionNumber() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();

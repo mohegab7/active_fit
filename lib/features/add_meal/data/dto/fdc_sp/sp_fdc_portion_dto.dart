@@ -1,5 +1,5 @@
+import 'package:active_fit/features/add_meal/data/dto/fdc_sp/sp_const.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc_sp/sp_const.dart';
 
 part 'sp_fdc_portion_dto.g.dart';
 

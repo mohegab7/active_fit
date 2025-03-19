@@ -1,8 +1,9 @@
+import 'package:active_fit/core/domain/entity/physical_activity_entity.dart';
+import 'package:active_fit/core/utils/navigation_options.dart';
+import 'package:active_fit/features/activity_detail/activity_detail_screen.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/domain/entity/physical_activity_entity.dart';
-import 'package:opennutritracker/core/utils/navigation_options.dart';
-import 'package:opennutritracker/features/activity_detail/activity_detail_screen.dart';
+
 
 class ActivityItemCard extends StatelessWidget {
   final PhysicalActivityEntity physicalActivityEntity;

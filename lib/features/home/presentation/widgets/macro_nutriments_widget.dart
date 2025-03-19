@@ -1,6 +1,7 @@
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class MacroNutrientsView extends StatefulWidget {
   final double totalCarbsIntake;

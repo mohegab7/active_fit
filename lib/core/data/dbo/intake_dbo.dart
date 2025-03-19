@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
-import 'package:opennutritracker/core/data/dbo/intake_type_dbo.dart';
-import 'package:opennutritracker/core/data/dbo/meal_dbo.dart';
-import 'package:opennutritracker/core/domain/entity/intake_entity.dart';
+import 'package:active_fit/core/data/dbo/intake_type_dbo.dart';
+import 'package:active_fit/core/data/dbo/meal_dbo.dart';
+import 'package:active_fit/core/domain/entity/intake_entity.dart';
 
 part 'intake_dbo.g.dart';
 

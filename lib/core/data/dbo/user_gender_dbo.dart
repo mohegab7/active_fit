@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:opennutritracker/core/domain/entity/user_gender_entity.dart';
+import 'package:active_fit/core/domain/entity/user_gender_entity.dart';
 
 part 'user_gender_dbo.g.dart';
 

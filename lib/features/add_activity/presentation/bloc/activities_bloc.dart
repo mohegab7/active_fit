@@ -1,9 +1,9 @@
+import 'package:active_fit/core/domain/entity/physical_activity_entity.dart';
+import 'package:active_fit/core/domain/usecase/get_physical_activity_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
-import 'package:opennutritracker/core/domain/entity/physical_activity_entity.dart';
-import 'package:opennutritracker/core/domain/usecase/get_physical_activity_usecase.dart';
 
 part 'activities_event.dart';
 

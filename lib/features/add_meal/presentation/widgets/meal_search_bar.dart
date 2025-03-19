@@ -1,6 +1,7 @@
+import 'package:active_fit/core/utils/custom_icons.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/utils/custom_icons.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class MealSearchBar extends StatelessWidget {
   final ValueNotifier<String> searchStringListener;

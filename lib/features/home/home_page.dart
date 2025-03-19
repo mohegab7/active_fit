@@ -1,19 +1,20 @@
+import 'package:active_fit/core/domain/entity/intake_entity.dart';
+import 'package:active_fit/core/domain/entity/intake_type_entity.dart';
+import 'package:active_fit/core/domain/entity/user_activity_entity.dart';
+import 'package:active_fit/core/presentation/widgets/activity_vertial_list.dart';
+import 'package:active_fit/core/presentation/widgets/delete_dialog.dart';
+import 'package:active_fit/core/presentation/widgets/disclaimer_dialog.dart';
+import 'package:active_fit/core/presentation/widgets/edit_dialog.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/features/add_meal/presentation/add_meal_type.dart';
+import 'package:active_fit/features/home/presentation/bloc/home_bloc.dart';
+import 'package:active_fit/features/home/presentation/widgets/dashboard_widget.dart';
+import 'package:active_fit/features/home/presentation/widgets/intake_vertical_list.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
-import 'package:opennutritracker/core/domain/entity/intake_entity.dart';
-import 'package:opennutritracker/core/domain/entity/intake_type_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_activity_entity.dart';
-import 'package:opennutritracker/core/presentation/widgets/activity_vertial_list.dart';
-import 'package:opennutritracker/core/presentation/widgets/edit_dialog.dart';
-import 'package:opennutritracker/core/presentation/widgets/delete_dialog.dart';
-import 'package:opennutritracker/core/presentation/widgets/disclaimer_dialog.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/features/add_meal/presentation/add_meal_type.dart';
-import 'package:opennutritracker/features/home/presentation/bloc/home_bloc.dart';
-import 'package:opennutritracker/features/home/presentation/widgets/dashboard_widget.dart';
-import 'package:opennutritracker/features/home/presentation/widgets/intake_vertical_list.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

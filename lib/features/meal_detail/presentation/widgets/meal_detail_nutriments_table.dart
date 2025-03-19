@@ -1,7 +1,8 @@
+import 'package:active_fit/core/utils/extensions.dart';
+import 'package:active_fit/features/add_meal/domain/entity/meal_entity.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/utils/extensions.dart';
-import 'package:opennutritracker/features/add_meal/domain/entity/meal_entity.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class MealDetailNutrimentsTable extends StatelessWidget {
   final MealEntity product;

@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc_sp/sp_const.dart';
+
+import '../fdc_sp/sp_const.dart';
 
 part 'fdc_food_nutriment_dto.g.dart';
 

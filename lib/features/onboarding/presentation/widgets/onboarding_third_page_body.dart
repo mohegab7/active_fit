@@ -1,7 +1,8 @@
+import 'package:active_fit/core/presentation/widgets/info_dialog.dart';
+import 'package:active_fit/features/onboarding/domain/entity/user_activity_selection_entity.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/presentation/widgets/info_dialog.dart';
-import 'package:opennutritracker/features/onboarding/domain/entity/user_activity_selection_entity.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class OnboardingThirdPageBody extends StatefulWidget {
   final Function(bool active, UserActivitySelectionEntity? selectedActivity)

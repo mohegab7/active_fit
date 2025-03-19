@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/data/dbo/tracked_day_dbo.dart';
+import 'package:active_fit/core/data/dbo/tracked_day_dbo.dart';
 
 class TrackedDayEntity extends Equatable {
   static const maxKcalDifferenceOverGoal = 500;
@@ -65,8 +65,7 @@ class TrackedDayEntity extends Equatable {
     }
   }
 
-  bool _hasExceededMaxKcalDifferenceGoal(
-      double calorieGoal, caloriesTracked) {
+  bool _hasExceededMaxKcalDifferenceGoal(double calorieGoal, caloriesTracked) {
     double difference = calorieGoal - caloriesTracked;
 
     if (calorieGoal < caloriesTracked) {

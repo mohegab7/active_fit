@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:opennutritracker/core/domain/entity/physical_activity_entity.dart';
+import 'package:active_fit/core/domain/entity/physical_activity_entity.dart';
 
 part 'physical_activity_dbo.g.dart';
 

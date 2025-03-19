@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:opennutritracker/core/domain/entity/user_bmi_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_entity.dart';
+import 'package:active_fit/core/domain/entity/user_bmi_entity.dart';
+import 'package:active_fit/core/domain/entity/user_entity.dart';
 
 class BMICalc {
   ///

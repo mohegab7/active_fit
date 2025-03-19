@@ -1,10 +1,10 @@
+import 'package:active_fit/core/presentation/main_screen.dart';
+import 'package:active_fit/features/login/login_screen.dart';
+import 'package:active_fit/features/register/cubit.dart';
+import 'package:active_fit/features/register/states.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opennutritracker/core/presentation/main_screen.dart';
-import 'package:opennutritracker/features/login/login_screen.dart';
-import 'package:opennutritracker/features/register/cubit.dart';
-import 'package:opennutritracker/features/register/states.dart';
 
 // ignore: must_be_immutable
 class RegisterScreen extends StatelessWidget {

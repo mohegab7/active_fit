@@ -1,8 +1,8 @@
-import 'package:opennutritracker/core/data/data_source/intake_data_source.dart';
-import 'package:opennutritracker/core/data/dbo/intake_dbo.dart';
-import 'package:opennutritracker/core/data/dbo/intake_type_dbo.dart';
-import 'package:opennutritracker/core/domain/entity/intake_entity.dart';
-import 'package:opennutritracker/core/domain/entity/intake_type_entity.dart';
+import 'package:active_fit/core/data/data_source/intake_data_source.dart';
+import 'package:active_fit/core/data/dbo/intake_dbo.dart';
+import 'package:active_fit/core/data/dbo/intake_type_dbo.dart';
+import 'package:active_fit/core/domain/entity/intake_entity.dart';
+import 'package:active_fit/core/domain/entity/intake_type_entity.dart';
 
 class IntakeRepository {
   final IntakeDataSource _intakeDataSource;
@@ -19,7 +19,8 @@ class IntakeRepository {
     await _intakeDataSource.deleteIntakeFromId(intakeEntity.id);
   }
 
-  Future<IntakeEntity?> updateIntake(String intakeId, Map<String, dynamic> fields) async {
+  Future<IntakeEntity?> updateIntake(
+      String intakeId, Map<String, dynamic> fields) async {
     var result = await _intakeDataSource.updateIntake(intakeId, fields);
     return result == null ? null : IntakeEntity.fromIntakeDBO(result);
   }

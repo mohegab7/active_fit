@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:opennutritracker/core/data/dbo/intake_dbo.dart';
-import 'package:opennutritracker/core/domain/entity/intake_type_entity.dart';
-import 'package:opennutritracker/features/add_meal/domain/entity/meal_entity.dart';
+import 'package:active_fit/core/data/dbo/intake_dbo.dart';
+import 'package:active_fit/core/domain/entity/intake_type_entity.dart';
+import 'package:active_fit/features/add_meal/domain/entity/meal_entity.dart';
 
 class IntakeEntity extends Equatable {
   final String id;

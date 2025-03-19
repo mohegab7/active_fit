@@ -1,5 +1,6 @@
+import 'package:active_fit/core/domain/entity/user_activity_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/domain/entity/user_activity_entity.dart';
+
 
 class ActivityCard extends StatelessWidget {
   final UserActivityEntity activityEntity;

@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:opennutritracker/core/domain/entity/user_weight_goal_entity.dart';
+import 'package:active_fit/core/domain/entity/user_weight_goal_entity.dart';
 
 part 'user_weight_goal_dbo.g.dart';
 

@@ -1,6 +1,7 @@
+import 'package:active_fit/core/domain/entity/tracked_day_entity.dart';
+import 'package:active_fit/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/domain/entity/tracked_day_entity.dart';
-import 'package:opennutritracker/core/utils/extensions.dart';
+
 import 'package:table_calendar/table_calendar.dart';
 
 class DiaryTableCalendar extends StatefulWidget {

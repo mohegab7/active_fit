@@ -1,13 +1,14 @@
+import 'package:active_fit/core/presentation/main_screen.dart';
+import 'package:active_fit/features/login/cubit.dart';
+import 'package:active_fit/features/login/states.dart';
+import 'package:active_fit/features/register/Register_screen.dart';
+import 'package:active_fit/model/constants/constants.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:opennutritracker/core/presentation/main_screen.dart';
-import 'package:opennutritracker/features/login/cubit.dart';
-import 'package:opennutritracker/features/login/states.dart';
-import 'package:opennutritracker/features/register/Register_screen.dart';
-import 'package:opennutritracker/model/constants/constants.dart';
+
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {

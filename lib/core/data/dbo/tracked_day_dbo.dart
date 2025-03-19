@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:opennutritracker/core/domain/entity/tracked_day_entity.dart';
+import 'package:active_fit/core/domain/entity/tracked_day_entity.dart';
 
 part 'tracked_day_dbo.g.dart';
 

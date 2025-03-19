@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:opennutritracker/core/domain/entity/user_pal_entity.dart';
+import 'package:active_fit/core/domain/entity/user_pal_entity.dart';
 
 part 'user_pal_dbo.g.dart';
 

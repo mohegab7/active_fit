@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:opennutritracker/core/data/dbo/meal_nutriments_dbo.dart';
-import 'package:opennutritracker/features/add_meal/domain/entity/meal_entity.dart';
+import 'package:active_fit/core/data/dbo/meal_nutriments_dbo.dart';
+import 'package:active_fit/features/add_meal/domain/entity/meal_entity.dart';
 
 part 'meal_dbo.g.dart';
 

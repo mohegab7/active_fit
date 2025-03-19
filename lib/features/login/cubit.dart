@@ -1,8 +1,9 @@
 
+import 'package:active_fit/features/login/states.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opennutritracker/features/login/states.dart';
+
 
 class LoginCuibt extends Cubit<LoginStates> {
   LoginCuibt() : super(Loginintinalstate());

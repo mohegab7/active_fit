@@ -1,24 +1,23 @@
+import 'package:active_fit/core/domain/entity/intake_entity.dart';
+import 'package:active_fit/core/domain/entity/user_activity_entity.dart';
+import 'package:active_fit/core/domain/usecase/add_config_usecase.dart';
+import 'package:active_fit/core/domain/usecase/add_tracked_day_usecase.dart';
+import 'package:active_fit/core/domain/usecase/delete_intake_usecase.dart';
+import 'package:active_fit/core/domain/usecase/delete_user_activity_usecase.dart';
+import 'package:active_fit/core/domain/usecase/get_config_usecase.dart';
+import 'package:active_fit/core/domain/usecase/get_intake_usecase.dart';
+import 'package:active_fit/core/domain/usecase/get_kcal_goal_usecase.dart';
+import 'package:active_fit/core/domain/usecase/get_macro_goal_usecase.dart';
+import 'package:active_fit/core/domain/usecase/get_user_activity_usecase.dart';
+import 'package:active_fit/core/domain/usecase/update_intake_usecase.dart';
+import 'package:active_fit/core/utils/calc/calorie_goal_calc.dart';
+import 'package:active_fit/core/utils/calc/macro_calc.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/features/diary/presentation/bloc/calendar_day_bloc.dart';
+import 'package:active_fit/features/diary/presentation/bloc/diary_bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opennutritracker/core/domain/entity/intake_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_activity_entity.dart';
-import 'package:opennutritracker/core/domain/usecase/add_config_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/add_tracked_day_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/delete_intake_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/delete_user_activity_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/get_config_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/get_intake_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/get_kcal_goal_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/get_macro_goal_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/get_user_activity_usecase.dart';
-import 'package:opennutritracker/core/domain/usecase/update_intake_usecase.dart';
-import 'package:opennutritracker/core/utils/calc/calorie_goal_calc.dart';
-import 'package:opennutritracker/core/utils/calc/macro_calc.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/features/diary/presentation/bloc/calendar_day_bloc.dart';
-import 'package:opennutritracker/features/diary/presentation/bloc/diary_bloc.dart';
-
 part 'home_event.dart';
 
 part 'home_state.dart';
@@ -102,7 +101,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final userActivities =
           await _getUserActivityUsecase.getTodayUserActivity();
       final totalKcalActivities =
-          userActivities.map((activity) => activity.burnedKcal).toList().sum;
+          userActivities.map((activity) => (activity as UserActivityEntity?)?.burnedKcal ?? 0).fold(0.0, (sum, kcal) => sum + kcal);
 
       final totalKcalGoal = await _getKcalGoalUsecase.getKcalGoal();
       final totalCarbsGoal =

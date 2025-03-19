@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/data/dbo/user_weight_goal_dbo.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+import 'package:active_fit/core/data/dbo/user_weight_goal_dbo.dart';
+import 'package:active_fit/generated/l10n.dart';
 
 enum UserWeightGoalEntity {
   loseWeight,

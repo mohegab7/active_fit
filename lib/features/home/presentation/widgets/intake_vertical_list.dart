@@ -1,16 +1,17 @@
+import 'package:active_fit/core/domain/entity/intake_entity.dart';
+import 'package:active_fit/core/presentation/widgets/intake_card.dart';
+import 'package:active_fit/core/presentation/widgets/placeholder_card.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/core/utils/navigation_options.dart';
+import 'package:active_fit/features/add_meal/presentation/add_meal_screen.dart';
+import 'package:active_fit/features/add_meal/presentation/add_meal_type.dart';
+import 'package:active_fit/features/diary/presentation/bloc/calendar_day_bloc.dart';
+import 'package:active_fit/features/diary/presentation/bloc/diary_bloc.dart';
+import 'package:active_fit/features/home/presentation/bloc/home_bloc.dart';
+import 'package:active_fit/features/meal_detail/presentation/bloc/meal_detail_bloc.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/domain/entity/intake_entity.dart';
-import 'package:opennutritracker/core/presentation/widgets/intake_card.dart';
-import 'package:opennutritracker/core/presentation/widgets/placeholder_card.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/core/utils/navigation_options.dart';
-import 'package:opennutritracker/features/add_meal/presentation/add_meal_screen.dart';
-import 'package:opennutritracker/features/add_meal/presentation/add_meal_type.dart';
-import 'package:opennutritracker/features/diary/presentation/bloc/calendar_day_bloc.dart';
-import 'package:opennutritracker/features/diary/presentation/bloc/diary_bloc.dart';
-import 'package:opennutritracker/features/home/presentation/bloc/home_bloc.dart';
-import 'package:opennutritracker/features/meal_detail/presentation/bloc/meal_detail_bloc.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class IntakeVerticalList extends StatefulWidget {
   final DateTime day;

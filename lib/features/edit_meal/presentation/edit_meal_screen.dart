@@ -1,20 +1,26 @@
+import 'package:active_fit/core/domain/entity/intake_type_entity.dart';
+import 'package:active_fit/core/utils/calc/unit_calc.dart';
+import 'package:active_fit/core/utils/custom_text_input_formatter.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/core/utils/navigation_options.dart';
+import 'package:active_fit/features/add_meal/domain/entity/meal_entity.dart';
+import 'package:active_fit/features/edit_meal/presentation/bloc/edit_meal_bloc.dart';
+import 'package:active_fit/features/edit_meal/presentation/widgets/default_meal_image.dart';
+import 'package:active_fit/features/meal_detail/meal_detail_screen.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:logging/logging.dart';
-import 'package:opennutritracker/core/domain/entity/intake_type_entity.dart';
-import 'package:opennutritracker/core/utils/calc/unit_calc.dart';
-import 'package:opennutritracker/core/utils/custom_text_input_formatter.dart';
-import 'package:opennutritracker/core/utils/extensions.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/core/utils/navigation_options.dart';
-import 'package:opennutritracker/features/add_meal/domain/entity/meal_entity.dart';
-import 'package:opennutritracker/features/edit_meal/presentation/bloc/edit_meal_bloc.dart';
-import 'package:opennutritracker/features/edit_meal/presentation/widgets/default_meal_image.dart';
-import 'package:opennutritracker/features/meal_detail/meal_detail_screen.dart';
-import 'package:opennutritracker/generated/l10n.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+
+extension DoubleExtensions on double? {
+  String toStringOrEmpty() {
+    return this?.toString() ?? '';
+  }
+}
+
 
 class EditMealScreen extends StatefulWidget {
   const EditMealScreen({super.key});
@@ -77,7 +83,7 @@ class _EditMealScreenState extends State<EditMealScreen> {
     _brandsTextController.text = _mealEntity.brands ?? "";
     _mealQuantityTextController.text = _mealEntity.mealQuantity ?? "";
     _servingQuantityTextController.text =
-        _mealEntity.servingQuantity.toStringOrEmpty();
+        _mealEntity.servingQuantity?.toStringOrEmpty() ?? '';
     _kcalTextController.text =
         _mealEntity.nutriments.energyKcal100.toStringOrEmpty();
     _carbsTextController.text =

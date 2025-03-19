@@ -1,10 +1,12 @@
-import 'package:opennutritracker/core/domain/entity/user_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_gender_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_pal_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_weight_goal_entity.dart';
-import 'package:opennutritracker/features/onboarding/domain/entity/user_activity_selection_entity.dart';
-import 'package:opennutritracker/features/onboarding/domain/entity/user_gender_selection_entity.dart';
-import 'package:opennutritracker/features/onboarding/domain/entity/user_goal_selection_entity.dart';
+
+
+import 'package:active_fit/core/domain/entity/user_entity.dart';
+import 'package:active_fit/core/domain/entity/user_gender_entity.dart';
+import 'package:active_fit/core/domain/entity/user_pal_entity.dart';
+import 'package:active_fit/core/domain/entity/user_weight_goal_entity.dart';
+import 'package:active_fit/features/onboarding/domain/entity/user_activity_selection_entity.dart';
+import 'package:active_fit/features/onboarding/domain/entity/user_gender_selection_entity.dart';
+import 'package:active_fit/features/onboarding/domain/entity/user_goal_selection_entity.dart';
 
 class UserDataMaskEntity {
   UserGenderSelectionEntity? gender;

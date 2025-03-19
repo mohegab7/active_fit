@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/data/dbo/app_theme_dbo.dart';
+import 'package:active_fit/core/data/dbo/app_theme_dbo.dart';
 
 enum AppThemeEntity {
   light,
@@ -18,7 +18,7 @@ enum AppThemeEntity {
       case AppThemeDBO.system:
         entity = AppThemeEntity.system;
         break;
-      }
+    }
     return entity;
   }
 

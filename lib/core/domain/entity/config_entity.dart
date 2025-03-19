@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:opennutritracker/core/data/dbo/config_dbo.dart';
-import 'package:opennutritracker/core/domain/entity/app_theme_entity.dart';
+import 'package:active_fit/core/data/dbo/config_dbo.dart';
+import 'package:active_fit/core/domain/entity/app_theme_entity.dart';
 
 class ConfigEntity extends Equatable {
   final bool hasAcceptedDisclaimer;

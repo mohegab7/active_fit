@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/core/presentation/widgets/dynamic_ont_logo.dart';
-import 'package:opennutritracker/core/utils/navigation_options.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+import 'package:active_fit/core/presentation/widgets/dynamic_ont_logo.dart';
+import 'package:active_fit/core/utils/navigation_options.dart';
+import 'package:active_fit/generated/l10n.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppbar({super.key});
@@ -16,8 +16,10 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
             child: RichText(
               text: TextSpan(
                 text: S.of(context).appTitle,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
                 children: <TextSpan>[
                   TextSpan(
                       text: ' ${S.of(context).betaVersionName}',

@@ -1,12 +1,12 @@
+import 'package:active_fit/core/presentation/widgets/error_dialog.dart';
+import 'package:active_fit/core/utils/locator.dart';
+import 'package:active_fit/features/add_activity/presentation/bloc/recent_activities_bloc.dart';
+import 'package:active_fit/features/add_meal/presentation/widgets/no_results_widget.dart';
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opennutritracker/core/presentation/widgets/error_dialog.dart';
-import 'package:opennutritracker/core/utils/locator.dart';
-import 'package:opennutritracker/features/add_activity/presentation/bloc/activities_bloc.dart';
-import 'package:opennutritracker/features/add_activity/presentation/bloc/recent_activities_bloc.dart';
-import 'package:opennutritracker/features/add_activity/presentation/widgets/activity_item_card.dart';
-import 'package:opennutritracker/features/add_meal/presentation/widgets/no_results_widget.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+import 'package:active_fit/features/add_activity/presentation/widgets/activity_item_card.dart';
+import 'package:active_fit/features/add_activity/presentation/bloc/activities_bloc.dart';
 
 class AddActivityScreen extends StatefulWidget {
   const AddActivityScreen({super.key});

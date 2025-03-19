@@ -1,14 +1,15 @@
 import 'dart:io';
 
+import 'package:active_fit/core/data/dbo/meal_dbo.dart';
+import 'package:active_fit/core/utils/id_generator.dart';
+import 'package:active_fit/core/utils/supported_language.dart';
+import 'package:active_fit/features/add_meal/data/dto/fdc/fdc_const.dart';
+import 'package:active_fit/features/add_meal/data/dto/fdc/fdc_food_dto.dart';
+import 'package:active_fit/features/add_meal/data/dto/fdc_sp/sp_fdc_food_dto.dart';
+import 'package:active_fit/features/add_meal/data/dto/off/off_product_dto.dart';
+import 'package:active_fit/features/add_meal/domain/entity/meal_nutriments_entity.dart';
 import 'package:equatable/equatable.dart';
-import 'package:opennutritracker/core/data/dbo/meal_dbo.dart';
-import 'package:opennutritracker/core/utils/id_generator.dart';
-import 'package:opennutritracker/core/utils/supported_language.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc/fdc_const.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc/fdc_food_dto.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc_sp/sp_fdc_food_dto.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/off/off_product_dto.dart';
-import 'package:opennutritracker/features/add_meal/domain/entity/meal_nutriments_entity.dart';
+
 
 class MealEntity extends Equatable {
   static const liquidUnits = {'ml', 'l', 'dl', 'cl', 'fl oz', 'fl.oz'};

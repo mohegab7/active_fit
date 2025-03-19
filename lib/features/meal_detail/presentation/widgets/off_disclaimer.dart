@@ -1,5 +1,6 @@
+import 'package:active_fit/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:opennutritracker/generated/l10n.dart';
+
 
 class OffDisclaimer extends StatelessWidget {
   const OffDisclaimer({super.key});

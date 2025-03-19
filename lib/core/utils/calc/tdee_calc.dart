@@ -1,7 +1,9 @@
-import 'package:opennutritracker/core/domain/entity/user_entity.dart';
-import 'package:opennutritracker/core/domain/entity/user_gender_entity.dart';
-import 'package:opennutritracker/core/utils/calc/bmr_calc.dart';
-import 'package:opennutritracker/core/utils/calc/pal_calc.dart';
+
+
+import 'package:active_fit/core/domain/entity/user_entity.dart';
+import 'package:active_fit/core/domain/entity/user_gender_entity.dart';
+import 'package:active_fit/core/utils/calc/bmr_calc.dart';
+import 'package:active_fit/core/utils/calc/pal_calc.dart';
 
 class TDEECalc {
   /// Calculates TDEE from userEntity based on the formula from

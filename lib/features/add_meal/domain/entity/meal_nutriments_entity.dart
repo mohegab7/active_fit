@@ -1,10 +1,11 @@
+import 'package:active_fit/core/data/dbo/meal_nutriments_dbo.dart';
+import 'package:active_fit/core/utils/extensions.dart';
+import 'package:active_fit/features/add_meal/data/dto/fdc/fdc_const.dart';
+import 'package:active_fit/features/add_meal/data/dto/fdc/fdc_food_nutriment_dto.dart';
+import 'package:active_fit/features/add_meal/data/dto/off/off_product_nutriments_dto.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:opennutritracker/core/data/dbo/meal_nutriments_dbo.dart';
-import 'package:opennutritracker/core/utils/extensions.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc/fdc_const.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/fdc/fdc_food_nutriment_dto.dart';
-import 'package:opennutritracker/features/add_meal/data/dto/off/off_product_nutriments_dto.dart';
+
 
 class MealNutrimentsEntity extends Equatable {
   final double? energyKcal100;
@@ -61,7 +62,7 @@ class MealNutrimentsEntity extends Equatable {
     // type, so cast to it Object?
     return MealNutrimentsEntity(
         energyKcal100:
-            (offNutriments.energy_kcal_100g as Object?).asDoubleOrNull(),
+            (offNutriments.energy_kcal_100g as Object?)?.asDoubleOrNull(),
         carbohydrates100:
             (offNutriments.carbohydrates_100g as Object?).asDoubleOrNull(),
         fat100: (offNutriments.fat_100g as Object?).asDoubleOrNull(),
