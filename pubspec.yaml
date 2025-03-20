@@ -73,13 +73,12 @@ dependencies:
   google_sign_in: ^6.2.1
   image_picker: ^1.1.2
   googleapis: ^13.2.0
-  # http: ^1.2.2
   googleapis_auth: ^1.6.0
   fluttertoast: ^8.2.12
   shared_preferences: ^2.5.2
   conditional_builder_null_safety: ^0.0.6
   flutter_localization: ^0.3.1
-  # conditional_builder: ^1.0.1
+ 
 
 dev_dependencies:
   flutter_test:
