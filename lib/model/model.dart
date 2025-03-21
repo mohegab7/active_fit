@@ -19,7 +19,7 @@ class UserModel {
     phone = json['phone'];
     uId = json['uId'];
     image = json['image'];
-    isEmailVerified = json['isEmailVerified'] ?? false;
+    isEmailVerified = json['isEmailVerified'] ?? true;
   }
   Map<String, dynamic> toMap() {
     return {

@@ -2,7 +2,6 @@ import 'package:active_fit/core/presentation/main_screen.dart';
 import 'package:active_fit/features/login/cubit.dart';
 import 'package:active_fit/features/login/states.dart';
 import 'package:active_fit/features/register/Register_screen.dart';
-import 'package:active_fit/model/constants/constants.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -158,20 +157,20 @@ class LoginScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 16),
                                 child: ElevatedButton.icon(
                                   onPressed: () {
-                                    // if (formkey.currentState!.validate()) {
-                                    //   LoginCuibt.get(context).userLogin(
-                                    //     email: emailcontroll.text,
-                                    //     password: passwordcontroll.text,
-                                    //   );
-
-                                      Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => MainScreen(),
-                                        ),
-                                        (route) => false,
+                                    if (formkey.currentState!.validate()) {
+                                      LoginCuibt.get(context).userLogin(
+                                        email: emailcontroll.text,
+                                        password: passwordcontroll.text,
                                       );
-                                    // }
+
+                                      //   Navigator.pushAndRemoveUntil(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //       builder: (context) => MainScreen(),
+                                      //     ),
+                                      //     (route) => false,
+                                      //   );
+                                    }
                                   },
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Theme.of(context)
@@ -277,16 +276,17 @@ class LoginScreen extends StatelessWidget {
               );
             }
             if (state is LoginSuccessState) {
-              CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MainScreen(),
-                  ),
-                  (route) => false,
-                );
-              });
+              // CacheHelper.saveData(key: 'uId', value: state).then((value) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainScreen(),
+                ),
+                (route) => false,
+              );
             }
+            // );
+            // }
           },
         ));
   }

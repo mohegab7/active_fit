@@ -1,4 +1,3 @@
-import 'package:active_fit/core/presentation/main_screen.dart';
 import 'package:active_fit/features/login/login_screen.dart';
 import 'package:active_fit/features/register/cubit.dart';
 import 'package:active_fit/features/register/states.dart';
@@ -249,21 +248,21 @@ class RegisterScreen extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 16),
                               child: ElevatedButton.icon(
                                 onPressed: () {
-                                  // if (formkey.currentState!.validate()) {
-                                  //   RegisterCuibt.get(context).userRegister(
-                                  //     email: emailcontroll.text,
-                                  //     password: passwordcontroll.text,
-                                  //     name: namecontroll.text,
-                                  //     phone: phonecontroll.text,
-                                  //   );
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MainScreen(),
-                                    ),
-                                    (route) => false,
-                                  );
-                                  // }
+                                  if (formkey.currentState!.validate()) {
+                                    RegisterCuibt.get(context).userRegister(
+                                      email: emailcontroll.text,
+                                      password: passwordcontroll.text,
+                                      name: namecontroll.text,
+                                      phone: phonecontroll.text,
+                                    );
+                                    // Navigator.pushAndRemoveUntil(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => MainScreen(),
+                                    //   ),
+                                    //   (route) => false,
+                                    // );
+                                  }
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Theme.of(context)

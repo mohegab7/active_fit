@@ -5,9 +5,9 @@ class Loginintinalstate extends LoginStates {}
 class LoginloadingState extends LoginStates {}
 
 class LoginSuccessState extends LoginStates {
-  final String uId;
+  // final String uId;
 
-  LoginSuccessState(this.uId);
+  // LoginSuccessState(this.uId);
 }
 
 class LoginErrorState extends LoginStates {

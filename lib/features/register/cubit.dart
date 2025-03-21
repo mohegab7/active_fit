@@ -1,11 +1,9 @@
-
 import 'package:active_fit/features/register/states.dart';
 import 'package:active_fit/model/model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class RegisterCuibt extends Cubit<RegisterStates> {
   RegisterCuibt() : super(Registerintinalstate());
@@ -21,15 +19,16 @@ class RegisterCuibt extends Cubit<RegisterStates> {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((value) {
-      // print(value.user?.email);
-      // print(value.user?.uid);
+      print(value.user?.email);
+      print(value.user?.uid);
+      print(value.user?.phoneNumber);
       userCreate(
         email: email,
         name: name,
         phone: phone,
         uId: value.user!.uid,
       );
-      // emit(RegisterSuccessState());
+      emit(RegisterSuccessState());
     }).catchError((error) {
       emit(RegisterErrorState(error.toString()));
     });
@@ -48,7 +47,7 @@ class RegisterCuibt extends Cubit<RegisterStates> {
       uId: uId,
       image:
           'https://img.freepik.com/premium-photo/photo-curly-teen-girl-with-wavy-hair-banner-curly-teen-girl-isolated-white-curly-teen-girl-studio-curly-teen-girl-background_474717-147568.jpg?w=1380',
-      isEmailVerified: false,
+      isEmailVerified: true,
     );
     FirebaseFirestore.instance
         .collection('users')
