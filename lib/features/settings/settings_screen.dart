@@ -7,16 +7,17 @@ import 'package:active_fit/core/utils/theme_mode_provider.dart';
 import 'package:active_fit/features/diary/presentation/bloc/calendar_day_bloc.dart';
 import 'package:active_fit/features/diary/presentation/bloc/diary_bloc.dart';
 import 'package:active_fit/features/home/presentation/bloc/home_bloc.dart';
+import 'package:active_fit/features/login/login_screen.dart';
 import 'package:active_fit/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:active_fit/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:active_fit/features/settings/presentation/widgets/calculations_dialog.dart';
 import 'package:active_fit/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -97,7 +98,43 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onTap: () => _showAboutDialog(context),
                 ),
                 const SizedBox(height: 32.0),
-                AppBannerVersion(versionNumber: state.versionNumber)
+                AppBannerVersion(versionNumber: state.versionNumber),
+                SizedBox(
+                  height: 16.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 15),
+                  child: Container(
+                    width: 370,
+                    height: 52,
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    child: ElevatedButton.icon(
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.pushAndRemoveUntil(
+                            // ignore: use_build_context_synchronously
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                            (route) => false,
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primaryContainer,
+                        ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
+                        // icon: const Icon(Icons.navigate_next_outlined),
+                        label: Text('Sign Out',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(fontSize: 20))),
+                  ),
+                ),
               ],
             );
           }
