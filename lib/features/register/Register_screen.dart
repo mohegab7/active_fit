@@ -40,13 +40,9 @@ class RegisterScreen extends StatelessWidget {
                             const SizedBox(
                               width: 120,
                             ),
-                            const Text(
+                            Text(
                               'Register',
-                              style: TextStyle(
-                                  color: Color(0xff0D1220),
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ],
                         ),
@@ -109,7 +105,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             child: TextFormField(
                               controller: namecontroll,
-                              style: TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your Name';
@@ -144,7 +140,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             child: TextFormField(
                               controller: emailcontroll,
-                              style: TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your email';
@@ -187,7 +183,7 @@ class RegisterScreen extends StatelessWidget {
                               // onFieldSubmitted: onSubmit,
                               controller: phonecontroll,
                               keyboardType: TextInputType.phone,
-                              style: const TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               decoration: InputDecoration(
                                 labelText: 'Phone',
                                 prefixIcon: const Icon(Icons.phone),
@@ -220,7 +216,7 @@ class RegisterScreen extends StatelessWidget {
                               obscureText:
                                   RegisterCuibt.get(context).ispassword,
                               keyboardType: TextInputType.visiblePassword,
-                              style: const TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               decoration: InputDecoration(
                                 labelText: 'password',
                                 prefixIcon: const Icon(Icons.lock_outline),

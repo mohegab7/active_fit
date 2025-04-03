@@ -12,4 +12,5 @@ class NavigationOptions {
   static const imageFullScreenRoute = "imageFullScreen";
   static const loginScreen = "loginScreen";
   static const registerScreen = "registerScreen";
+  static const dashboard = "dashboard";
 }

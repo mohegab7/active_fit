@@ -37,13 +37,10 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           width: 120,
                         ),
-                        const Center(
+                        Center(
                           child: Text(
                             'LOGIN',
-                            style: TextStyle(
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
                         const SizedBox(
@@ -64,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                             child: TextFormField(
                               controller: emailcontroll,
-                              style: const TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your email';
@@ -76,9 +73,11 @@ class LoginScreen extends StatelessWidget {
 
                               keyboardType: TextInputType.emailAddress,
 
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
+                                labelStyle:
+                                    Theme.of(context).textTheme.titleLarge,
                                 labelText: 'Email',
-                                prefixIcon: Icon(Icons.email_outlined),
+                                prefixIcon: const Icon(Icons.email_outlined),
                                 border: InputBorder.none,
                               ),
                             ),
@@ -122,8 +121,10 @@ class LoginScreen extends StatelessWidget {
                               controller: passwordcontroll,
                               obscureText: LoginCuibt.get(context).ispassword,
                               keyboardType: TextInputType.visiblePassword,
-                              style: const TextStyle(color: Colors.black),
+                              style: Theme.of(context).textTheme.titleLarge,
                               decoration: InputDecoration(
+                                labelStyle:
+                                    Theme.of(context).textTheme.titleLarge,
                                 labelText: 'password',
                                 prefixIcon: const Icon(Icons.lock_outline),
                                 border: InputBorder.none,

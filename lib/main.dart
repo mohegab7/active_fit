@@ -13,6 +13,7 @@ import 'package:active_fit/core/utils/theme_mode_provider.dart';
 import 'package:active_fit/features/activity_detail/activity_detail_screen.dart';
 import 'package:active_fit/features/add_activity/presentation/add_activity_screen.dart';
 import 'package:active_fit/features/add_meal/presentation/add_meal_screen.dart';
+import 'package:active_fit/features/dashboard/dashboard.dart';
 import 'package:active_fit/features/edit_meal/presentation/edit_meal_screen.dart';
 import 'package:active_fit/features/login/login_screen.dart';
 import 'package:active_fit/features/meal_detail/meal_detail_screen.dart';
@@ -100,8 +101,8 @@ class ACtiveFitApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       initialRoute: userInitialized
-          ? NavigationOptions.loginScreen
-          : NavigationOptions.loginScreen,
+          ? NavigationOptions.mainRoute
+          : NavigationOptions.onboardingRoute,
       routes: {
         NavigationOptions.mainRoute: (context) => const MainScreen(),
         NavigationOptions.onboardingRoute: (context) =>
@@ -120,6 +121,7 @@ class ACtiveFitApp extends StatelessWidget {
             const ImageFullScreen(),
         NavigationOptions.loginScreen: (context) => LoginScreen(),
         NavigationOptions.registerScreen: (context) => RegisterScreen(),
+        NavigationOptions.dashboard: (context) => const Dashboard_Screen(),
       },
     );
   }

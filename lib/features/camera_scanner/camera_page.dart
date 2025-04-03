@@ -1,38 +1,17 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
-void main() {
-  runApp(const Camera_Page());
-}
-
-class Camera_Page extends StatelessWidget {
+class Camera_Page extends StatefulWidget {
   const Camera_Page({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Food Calorie App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const FoodRecognitionScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<Camera_Page> createState() => _FoodRecognitionScreenState();
 }
 
-class FoodRecognitionScreen extends StatefulWidget {
-  const FoodRecognitionScreen({super.key});
-
-  @override
-  State<FoodRecognitionScreen> createState() => _FoodRecognitionScreenState();
-}
-
-class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
+class _FoodRecognitionScreenState extends State<Camera_Page> {
   File? _image;
   String? _foodName;
   Map<String, dynamic>? _nutritionInfo;
@@ -41,7 +20,8 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
 
   final ImagePicker _picker = ImagePicker();
   final String clarifaiApiKey = "44d2af4b2fd948c0b9f8d229360bd45d";
-  final String spoonacularApiKey = "eb46c977109a474eb4e42d4fd4258530";
+  final String edamamAppId = "67d045a0";
+  final String edamamAppKey = "bc7f8881c24b194298de52ca0668165b";
 
   Future<void> _pickImage(ImageSource source) async {
     try {
@@ -62,7 +42,7 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
       setState(() {
         _isLoading = false;
         _errorMessage =
-            'An error occurred while selecting the image: ${e.toString()}';
+            'An error occurred while selecting the image:${e.toString()}';
       });
     }
   }
@@ -104,13 +84,13 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
         } else {
           setState(() {
             _isLoading = false;
-            _errorMessage = 'No food was detected in the image';
+            _errorMessage = 'No food detected in the image';
           });
         }
       } else {
         setState(() {
           _isLoading = false;
-          _errorMessage = 'Food recognition error: ${response.statusCode}';
+          _errorMessage = 'Error in food recognition: ${response.statusCode}';
         });
       }
     } catch (e) {
@@ -124,69 +104,50 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
 
   Future<void> _getNutritionInfo(String foodName) async {
     try {
-      // الخطوة 1: البحث عن ID المكون
-      final searchResponse = await http.get(
+      final response = await http.get(
         Uri.parse(
-          "https://api.spoonacular.com/food/ingredients/search?query=$foodName&apiKey=$spoonacularApiKey",
+          "https://api.edamam.com/api/food-database/v2/parser?ingr=${Uri.encodeComponent(foodName)}&app_id=$edamamAppId&app_key=$edamamAppKey",
         ),
       );
 
-      if (searchResponse.statusCode == 200) {
-        final searchData = jsonDecode(searchResponse.body);
-        if (searchData["results"] != null && searchData["results"].isNotEmpty) {
-          final ingredientId = searchData["results"][0]["id"];
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
 
-          // الخطوة 2: الحصول على المعلومات الغذائية
-          final nutritionResponse = await http.get(
-            Uri.parse(
-              "https://api.spoonacular.com/food/ingredients/$ingredientId/information?amount=100&apiKey=$spoonacularApiKey",
-            ),
-          );
+        if (data["hints"] != null && data["hints"].isNotEmpty) {
+          // Take the first result
+          final firstResult = data["hints"][0];
+          final food = firstResult["food"];
 
-          if (nutritionResponse.statusCode == 200) {
-            final nutritionData = jsonDecode(nutritionResponse.body);
-            setState(() {
-              _nutritionInfo = {
-                "calories": nutritionData["nutrition"]["nutrients"][0]["amount"]
-                        ?.round() ??
-                    0,
-                "fat": nutritionData["nutrition"]["nutrients"][1]["amount"]
-                        ?.round() ??
-                    0,
-                "carbs": nutritionData["nutrition"]["nutrients"][2]["amount"]
-                        ?.round() ??
-                    0,
-                "protein": nutritionData["nutrition"]["nutrients"][3]["amount"]
-                        ?.round() ??
-                    0,
-              };
-              _isLoading = false;
-            });
-          } else {
-            setState(() {
-              _isLoading = false;
-              _errorMessage =
-                  'Error retrieving nutritional information: ${nutritionResponse.statusCode}';
-            });
-          }
+          // Extract nutrition information
+          final nutrients = food["nutrients"];
+
+          setState(() {
+            _nutritionInfo = {
+              "calories": nutrients["ENERC_KCAL"]?.round() ?? 0,
+              "fat": nutrients["FAT"]?.round() ?? 0,
+              "carbs": nutrients["CHOCDF"]?.round() ?? 0,
+              "protein": nutrients["PROCNT"]?.round() ?? 0,
+            };
+            _isLoading = false;
+          });
         } else {
           setState(() {
             _isLoading = false;
-            _errorMessage = 'No information available for..$foodName';
+            _errorMessage = 'No information available for$foodName';
           });
         }
       } else {
         setState(() {
           _isLoading = false;
           _errorMessage =
-              'Error searching for the food: ${searchResponse.statusCode}';
+              'Error retrieving nutrition information: ${response.statusCode}';
         });
       }
     } catch (e) {
       setState(() {
         _isLoading = false;
         _errorMessage =
-            'An error occurred while fetching the nutritional information: ${e.toString()}';
+            'An error occurred while fetching the nutrition information:${e.toString()}';
       });
     }
   }
@@ -195,7 +156,6 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text("تطبيق السعرات الحرارية للطعام"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -251,7 +211,7 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  "Identified: $_foodName",
+                  "Recognized: $_foodName",
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -262,7 +222,7 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
             if (_nutritionInfo != null) ...[
               const SizedBox(height: 20),
               const Text(
-                "Nutritional Information:",
+                "Nutrition facts:",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
@@ -270,59 +230,27 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
             ],
             const SizedBox(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                  child: Container(
-                    width: 120,
-                    height: 55,
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        _pickImage(ImageSource.camera);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            Theme.of(context).colorScheme.onPrimaryContainer,
-                        backgroundColor: Color.fromARGB(255, 44, 216, 145),
-                      ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                      icon: const Icon(
-                        Icons.camera_alt_outlined,
-                        color: Colors.black,
-                      ),
-                      label: Text('Camera',
-                          style: Theme.of(context).textTheme.labelLarge!),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.camera_alt),
+                  label: const Text("The camera"),
+                  onPressed: () => _pickImage(ImageSource.camera),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                  child: Container(
-                    width: 120,
-                    height: 55,
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        _pickImage(ImageSource.gallery);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 16,
-                        ),
-                        foregroundColor:
-                            Theme.of(context).colorScheme.onPrimaryContainer,
-                        backgroundColor: Color.fromARGB(255, 44, 216, 145),
-                      ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                      icon: const Icon(
-                        Icons.photo_outlined,
-                        color: Colors.black,
-                      ),
-                      label: Text('gallery',
-                          style: Theme.of(context).textTheme.labelLarge!),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.photo_library),
+                  label: const Text("The gallery"),
+                  onPressed: () => _pickImage(ImageSource.gallery),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
                     ),
                   ),
                 ),
@@ -347,7 +275,7 @@ class _FoodRecognitionScreenState extends State<FoodRecognitionScreen> {
               "${_nutritionInfo!["calories"]} kcal",
             ),
             const Divider(),
-            _buildNutritionRow("Fat", "${_nutritionInfo!["fat"]} g"),
+            _buildNutritionRow("Fats", "${_nutritionInfo!["fat"]} g"),
             const Divider(),
             _buildNutritionRow(
                 "Carbohydrates", "${_nutritionInfo!["carbs"]} g"),

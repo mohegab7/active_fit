@@ -61,6 +61,7 @@ dependencies:
   mobile_scanner: ^6.0.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  google_fonts: ^6.2.1
   sentry_flutter: ^8.11.2
   supabase_flutter: ^2.8.2
   font_awesome_flutter: ^10.8.0
@@ -78,6 +79,7 @@ dependencies:
   shared_preferences: ^2.5.2
   conditional_builder_null_safety: ^0.0.6
   flutter_localization: ^0.3.1
+  fl_chart: ^0.70.2
  
 
 dev_dependencies:
