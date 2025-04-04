@@ -11,10 +11,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
+
   var formkey = GlobalKey<FormState>();
   var emailcontroll = TextEditingController();
   var passwordcontroll = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     // return Scaffold();
@@ -64,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter your email';
+                                  return '     Please enter your email    ';
                                 }
                                 return null;
                               },
@@ -99,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                             child: TextFormField(
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Please enter your Password';
+                                  return '     Please enter your Password';
                                 }
                                 return null;
                               },
@@ -245,14 +246,14 @@ class LoginScreen extends StatelessWidget {
                                 size: 40,
                               ),
                               onPressed: () {
-                                print("Facebook icon clicked!");
+                              // LoginCuibt.get(context).signInWithFacebook();
                               },
                             ),
                             const SizedBox(
                               width: 20,
                             ),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {LoginCuibt.get(context).signInWithGoogle();},
                                 icon: const FaIcon(FontAwesomeIcons.google,
                                     size: 35)),
                           ],

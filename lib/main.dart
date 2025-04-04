@@ -101,7 +101,7 @@ class ACtiveFitApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       initialRoute: userInitialized
-          ? NavigationOptions.mainRoute
+          ? NavigationOptions.loginScreen
           : NavigationOptions.onboardingRoute,
       routes: {
         NavigationOptions.mainRoute: (context) => const MainScreen(),
