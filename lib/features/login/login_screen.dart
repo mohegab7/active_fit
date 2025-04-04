@@ -287,6 +287,16 @@ class LoginScreen extends StatelessWidget {
                 (route) => false,
               );
             }
+            if (state is LoginWithGoogleSuccessState) {
+              // CacheHelper.saveData(key: 'uId', value: state).then((value) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainScreen(),
+                ),
+                (route) => false,
+              );
+            }
             // );
             // }
           },

@@ -10,6 +10,12 @@ class LoginSuccessState extends LoginStates {
   // LoginSuccessState(this.uId);
 }
 
+class LoginWithGoogleSuccessState extends LoginStates {
+  // final String uId;
+
+  // LoginSuccessState(this.uId);
+}
+
 class LoginErrorState extends LoginStates {
   LoginErrorState(this.error);
 

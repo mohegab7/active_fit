@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:active_fit/features/login/states.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +60,7 @@ Future<User?> signInWithGoogle() async {
 
   final FirebaseAuth auth = FirebaseAuth.instance;  
   UserCredential userCredential = await auth.signInWithCredential(credential);  
+  emit(LoginWithGoogleSuccessState());
   return userCredential.user;  
 }
 
