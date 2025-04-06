@@ -1,6 +1,7 @@
 import 'package:active_fit/core/domain/entity/app_theme_entity.dart';
 import 'package:active_fit/core/presentation/widgets/app_banner_version.dart';
 import 'package:active_fit/core/presentation/widgets/disclaimer_dialog.dart';
+import 'package:active_fit/core/utils/app_const.dart';
 import 'package:active_fit/core/utils/locator.dart';
 import 'package:active_fit/core/utils/theme_mode_provider.dart';
 import 'package:active_fit/features/diary/presentation/bloc/calendar_day_bloc.dart';
@@ -14,7 +15,7 @@ import 'package:active_fit/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:package_info_plus/package_info_plus.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -94,7 +95,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ListTile(
                   leading: const Icon(Icons.error_outline_outlined),
                   title: Text(S.of(context).settingAboutLabel),
-                  onTap: () => _showCustomAboutDialog(context),
+                  onTap: () => _showAboutDialog(context),
                 ),
                 const SizedBox(height: 32.0),
                 AppBannerVersion(versionNumber: state.versionNumber),
@@ -315,8 +316,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _reportError(BuildContext context) async {
-    final reportUri = Uri.parse(
-        "https://wa.me/+201062432452?text=welcome,%20I%20want%20to%20report%20an%20error");
+    final reportUri =
+        Uri.parse("mailto:${AppConst.reportErrorEmail}?subject=Report_Error");
 
     if (await canLaunchUrl(reportUri)) {
       launchUrl(reportUri);
@@ -370,104 +371,48 @@ class _SettingsScreenState extends State<SettingsScreen> {
   //       });
   // }
 
-  // void _showAboutDialog(BuildContext context) async {
-  //   PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  //   if (context.mounted) {
-  //     showAboutDialog(
-  //         context: context,
-  //         applicationName: S.of(context).appTitle,
-  //         applicationIcon: SizedBox(
-  //             width: 40,
-  //             child: Image.asset('assets/icon/active_logo_square.png')),
-  //         applicationVersion: packageInfo.version,
-  //         applicationLegalese: S.of(context).appLicenseLabel,
-  //         children: [
-  //           TextButton(
-  //               onPressed: () {
-  //                 // _launchSourceCodeUrl(context);
-  //               },
-  //               child: Row(
-  //                 children: [
-  //                   const Icon(Icons.code_outlined),
-  //                   const SizedBox(width: 8.0),
-  //                   Text(
-  //                       /*S.of(context).settingsSourceCodeLabel*/ 'Yassin&Hegab Developments'),
-  //                 ],
-  //               )),
-  //           TextButton(
-  //               onPressed: () {
-  //                 // _launchPrivacyPolicyUrl(context);
-  //               },
-  //               child: Row(
-  //                 children: [
-  //                   const Icon(Icons.policy_outlined),
-  //                   const SizedBox(width: 8.0),
-  //                   Text(/*S.of(context).privacyPolicyLabel*/ 'Dr Magdy'),
-  //                 ],
-  //               ))
-  //         ]);
-  //   }
-  // }
-  void _showCustomAboutDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        title: Row(
+  void _showAboutDialog(BuildContext context) async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    if (context.mounted) {
+      showAboutDialog(
+          context: context,
+          applicationName: S.of(context).appTitle,
+          applicationIcon: SizedBox(
+              width: 40,
+              child: Image.asset('assets/icon/active_logo_square.png')),
+          applicationVersion: packageInfo.version,
+          applicationLegalese: S.of(context).appLicenseLabel,
           children: [
-            Image.asset('assets/icon/active_logo_square.png',
-                height: 40), // أيقونة التطبيق
-            const SizedBox(width: 10),
-            const Text('ActiveFit',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('1.0.0\nCs-07 GP', textAlign: TextAlign.center),
-            const SizedBox(height: 10),
             TextButton(
-              onPressed: () {
-                // _launchSourceCodeUrl(context);
-              },
-              child: Row(
-                children: [
-                  const Icon(Icons.code_outlined),
-                  const SizedBox(width: 8.0),
-                  const Text('Source Code'),
-                ],
-              ),
-            ),
+                onPressed: () {
+                  // _launchSourceCodeUrl(context);
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.code_outlined),
+                    const SizedBox(width: 8.0),
+                    Text(
+                        /*S.of(context).settingsSourceCodeLabel*/ 'Yassin&Hegab Developments'),
+                  ],
+                )),
             TextButton(
-              onPressed: () {
-                // _launchPrivacyPolicyUrl(context);
-              },
-              child: Row(
-                children: [
-                  const Icon(Icons.policy_outlined),
-                  const SizedBox(width: 8.0),
-                  const Text('Dr Magdy'),
-                ],
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
+                onPressed: () {
+                  // _launchPrivacyPolicyUrl(context);
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.policy_outlined),
+                    const SizedBox(width: 8.0),
+                    Text(/*S.of(context).privacyPolicyLabel*/ 'Dr Magdy'),
+                  ],
+                ))
+          ]);
+    }
   }
 
   // void _launchSourceCodeUrl(BuildContext context) async {
-  //   // final sourceCodeUri = Uri.parse(AppConst.sourceCodeUrl);
-  //   // _launchUrl(context, sourceCodeUri);
+  //   final sourceCodeUri = Uri.parse(AppConst.sourceCodeUrl);
+  //   _launchUrl(context, sourceCodeUri);
   // }
 
   // void _launchPrivacyPolicyUrl(BuildContext context) async {
@@ -475,16 +420,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   //   _launchUrl(context, sourceCodeUri);
   // }
 
-  // ignore: unused_element
-  void _launchUrl(BuildContext context, Uri url) async {
-    if (await canLaunchUrl(url)) {
-      launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      // Cannot open browser app, show error snackbar
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(S.of(context).errorOpeningBrowser)));
-      }
-    }
-  }
+//   void _launchUrl(BuildContext context, Uri url) async {
+//     if (await canLaunchUrl(url)) {
+//       launchUrl(url, mode: LaunchMode.externalApplication);
+//     } else {
+//       // Cannot open browser app, show error snackbar
+//       if (context.mounted) {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//             SnackBar(content: Text(S.of(context).errorOpeningBrowser)));
+//       }
+//     }
+//   }
 }

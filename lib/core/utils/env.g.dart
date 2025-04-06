@@ -34,7 +34,7 @@ final class _Env {
   static final String fdcApiKey = String.fromCharCodes(List<int>.generate(
     _envieddatafdcApiKey.length,
     (int i) => i,
-    growable: false,
+    growable: true,
   ).map((int i) => _envieddatafdcApiKey[i] ^ _enviedkeyfdcApiKey[i]));
 
   static const List<int> _enviedkeysentryDns = <int>[

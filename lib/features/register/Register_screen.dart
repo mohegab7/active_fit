@@ -20,7 +20,6 @@ class RegisterScreen extends StatelessWidget {
         create: (BuildContext context) => RegisterCuibt(),
         child: BlocConsumer<RegisterCuibt, RegisterStates>(
           builder: (context, state) {
-            
             return Scaffold(
               body: SafeArea(
                 child: SingleChildScrollView(
@@ -109,7 +108,7 @@ class RegisterScreen extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return '     Please enter your Name\n';
+                                  return 'Please enter your Name';
                                 }
                                 return null;
                               },
@@ -144,7 +143,7 @@ class RegisterScreen extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return '     Please enter your email\n';
+                                  return 'Please enter your email';
                                 }
                                 return null;
                               },
@@ -177,7 +176,7 @@ class RegisterScreen extends StatelessWidget {
                             child: TextFormField(
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return '     Please enter your phone\n';
+                                  return 'Please enter your phone';
                                 }
                                 return null;
                               },
@@ -209,7 +208,7 @@ class RegisterScreen extends StatelessWidget {
                             child: TextFormField(
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return '     Please enter your Password\n';
+                                  return 'Please enter your Password';
                                 }
                                 return null;
                               },
@@ -291,14 +290,6 @@ class RegisterScreen extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is CreateUserSuccessState) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LoginScreen(),
-                ),
-              );
-            }
-             if (state is CreateUserErrorState) {
               Navigator.push(
                 context,
                 MaterialPageRoute(

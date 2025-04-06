@@ -1,7 +1,6 @@
 import 'package:active_fit/core/domain/usecase/get_config_usecase.dart';
 import 'package:active_fit/features/add_meal/domain/entity/meal_entity.dart';
 import 'package:active_fit/features/add_meal/domain/usecase/search_products_usecase.dart';
-import 'package:active_fit/features/food/usda_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
@@ -14,7 +13,7 @@ part 'food_state.dart';
 class FoodBloc extends Bloc<FoodEvent, FoodState> {
   final log = Logger('FoodBloc');
 
-  final UsdaService _searchProductUseCase;
+  final SearchProductsUseCase _searchProductUseCase;
   final GetConfigUsecase _getConfigUsecase;
 
   String _searchString = "";
@@ -27,7 +26,7 @@ class FoodBloc extends Bloc<FoodEvent, FoodState> {
         emit(FoodLoadingState());
         try {
           final result =
-              await _searchProductUseCase.searchFoods(_searchString);
+              await _searchProductUseCase.searchFDCFoodByString(_searchString);
           final config = await _getConfigUsecase.getConfig();
 
           emit(FoodLoadedState(
@@ -35,6 +34,7 @@ class FoodBloc extends Bloc<FoodEvent, FoodState> {
         } catch (error) {
           log.severe(error);
           emit(FoodFailedState());
+         print(error.toString());
         }
       }
     });
@@ -42,12 +42,11 @@ class FoodBloc extends Bloc<FoodEvent, FoodState> {
       emit(FoodLoadingState());
       try {
         final result =
-            await _searchProductUseCase.searchFoods(_searchString);
+            await _searchProductUseCase.searchFDCFoodByString(_searchString);
         emit(FoodLoadedState(food: result));
       } catch (error) {
         log.severe(error);
         emit(FoodFailedState());
-        print(error.toString());
       }
     });
   }

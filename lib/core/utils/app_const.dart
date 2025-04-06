@@ -6,7 +6,7 @@ class AppConst {
   static const platformNameAndroid = "Android";
   static const platformNameIOS = "iOS";
   static const reportErrorEmail = "active_fit-dev@pm.me";
-  // static const sourceCodeUrl = "https://github.com/simonoppowa/active_fit";
+  static const sourceCodeUrl = "https://github.com/simonoppowa/active_fit";
 
   static Future<String> getVersionNumber() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -26,6 +26,6 @@ class AppConst {
   static Future<String> getUserAgentString() async {
     final versionNumber = await getVersionNumber();
     final platformVersion = getPlatformName();
-    return '$userAgentAppName - $platformVersion - Version $versionNumber - ';
+    return '$userAgentAppName - $platformVersion - Version $versionNumber - $sourceCodeUrl';
   }
 }

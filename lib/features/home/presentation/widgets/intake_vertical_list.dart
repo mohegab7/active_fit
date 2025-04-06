@@ -70,7 +70,6 @@ class _IntakeVerticalListState extends State<IntakeVerticalList> {
               const SizedBox(width: 4.0),
               Text(
                 widget.title,
-                // 'feod',
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge

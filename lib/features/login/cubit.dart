@@ -27,12 +27,16 @@ class LoginCuibt extends Cubit<LoginStates> {
     });
   }
 
-void configureFacebookProvider() {
-  var provider = FacebookAuthProvider();
-  provider.addScope('user_birthday');
-  FirebaseAuth.instance.setLanguageCode('it');
+//   login() async{
+// final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+// final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+// final credential = GoogleAuthProvider.credential(
+//  accessToken: googleAuth?. accessToken, 
+//  idToken: googleAuth?. idToken,
+// );
+// await FirebaseAuth. instance. signInWithCredential (credential as AuthCredential);
+//   }
 
-}
 Future<User?> signInWithGoogle() async {  
   final GoogleSignInAccount? googleUser = await googleSignIn.signIn();  
   
