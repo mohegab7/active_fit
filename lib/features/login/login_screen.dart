@@ -44,9 +44,11 @@ class LoginScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
-                        const SizedBox(
-                          height: 160.0,
-                        ),
+                      Center(
+                        child: Image.asset('assets/icon/active_banner_top.png',
+                        height: 200,
+                        width: 200,),
+                      ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 15),
@@ -65,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleLarge,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return '     Please enter your email    ';
+                                  return '     Please enter your email\n    ';
                                 }
                                 return null;
                               },
@@ -189,7 +191,7 @@ class LoginScreen extends StatelessWidget {
                                   label: Text('Login',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .labelLarge),
+                                          .labelLarge?.copyWith(fontWeight: FontWeight.bold)),
                                 ),
                               );
                             },
@@ -198,13 +200,13 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.symmetric(
+                            padding:  EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 15),
                             child: Container(
                               width: 370,
                               height: 52,
                               margin:
-                                  const EdgeInsets.symmetric(horizontal: 16),
+                                   EdgeInsets.symmetric(horizontal: 16),
                               child: ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.push(
@@ -225,15 +227,16 @@ class LoginScreen extends StatelessWidget {
                                       elevation:
                                           ButtonStyleButton.allOrNull(0.0)),
                                   icon:
-                                      const Icon(Icons.navigate_next_outlined),
+                                       Icon(Icons.navigate_next_outlined),
                                   label: Text('Register',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .labelLarge)),
-                            )),
+                                          .labelLarge?.copyWith(fontWeight: FontWeight.bold)),
+                            ),),),
 
                         const SizedBox(
-                          height: 20,
+                          height: 20.0,
+                          width: 0.0,
                         ),
                         Row(
                           // crossAxisAlignment: CrossAxisAlignment.center,

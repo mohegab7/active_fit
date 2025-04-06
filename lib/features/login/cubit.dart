@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:active_fit/features/login/states.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,16 +27,12 @@ class LoginCuibt extends Cubit<LoginStates> {
     });
   }
 
-//   login() async{
-// final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-// final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-// final credential = GoogleAuthProvider.credential(
-//  accessToken: googleAuth?. accessToken, 
-//  idToken: googleAuth?. idToken,
-// );
-// await FirebaseAuth. instance. signInWithCredential (credential as AuthCredential);
-//   }
+void configureFacebookProvider() {
+  var provider = FacebookAuthProvider();
+  provider.addScope('user_birthday');
+  FirebaseAuth.instance.setLanguageCode('it');
 
+}
 Future<User?> signInWithGoogle() async {  
   final GoogleSignInAccount? googleUser = await googleSignIn.signIn();  
   

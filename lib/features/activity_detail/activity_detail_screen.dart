@@ -4,7 +4,6 @@ import 'package:active_fit/core/utils/locator.dart';
 import 'package:active_fit/core/utils/navigation_options.dart';
 import 'package:active_fit/features/activity_detail/presentation/bloc/activity_detail_bloc.dart';
 import 'package:active_fit/features/activity_detail/presentation/widget/activity_detail_bottom_sheet.dart';
-import 'package:active_fit/features/activity_detail/presentation/widget/activity_info_button.dart';
 import 'package:active_fit/features/activity_detail/presentation/widget/activity_title_expanded.dart';
 import 'package:active_fit/features/diary/presentation/bloc/calendar_day_bloc.dart';
 import 'package:active_fit/features/diary/presentation/bloc/diary_bloc.dart';
@@ -159,7 +158,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                 const SizedBox(height: 8.0),
                 const Divider(),
                 const SizedBox(height: 48.0),
-                const ActivityInfoButton(),
+                // const ActivityInfoButton(),
                 const SizedBox(height: 200.0) // height added to scroll
               ],
             ),

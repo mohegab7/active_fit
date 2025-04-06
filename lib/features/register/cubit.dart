@@ -30,7 +30,9 @@ class RegisterCuibt extends Cubit<RegisterStates> {
       );
       emit(RegisterSuccessState());
     }).catchError((error) {
+      
       emit(RegisterErrorState(error.toString()));
+      print(error.toString());
     });
   }
 
@@ -45,8 +47,6 @@ class RegisterCuibt extends Cubit<RegisterStates> {
       name: name,
       phone: phone,
       uId: uId,
-      image:
-          'https://img.freepik.com/premium-photo/photo-curly-teen-girl-with-wavy-hair-banner-curly-teen-girl-isolated-white-curly-teen-girl-studio-curly-teen-girl-background_474717-147568.jpg?w=1380',
       isEmailVerified: true,
     );
     FirebaseFirestore.instance
