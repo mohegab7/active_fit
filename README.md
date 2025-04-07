@@ -1,3 +1,8 @@
+
+![WhatsApp Image 2025-04-07 at 23 26 33_a6c947e6](https://github.com/user-attachments/assets/0e6fe48e-2829-4df9-954d-f74baf0c5276)
+
+
+
 # active_fit
 
 • Nutritional Tracking: Easily log your meals and snacks, and access a vast database of food items and ingredients to get detailed nutritional information.
