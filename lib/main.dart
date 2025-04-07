@@ -1,3 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:logging/logging.dart';
+import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:active_fit/core/data/data_source/user_data_source.dart';
 import 'package:active_fit/core/data/repository/config_repository.dart';
 import 'package:active_fit/core/domain/entity/app_theme_entity.dart';
@@ -22,19 +31,13 @@ import 'package:active_fit/features/register/Register_screen.dart';
 import 'package:active_fit/features/scanner/scanner_screen.dart';
 import 'package:active_fit/features/settings/settings_screen.dart';
 import 'package:active_fit/generated/l10n.dart';
+import 'package:active_fit/model/constants/CaheHelper.dart';
 import 'package:active_fit/model/constants/bloc_ofserver.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logging/logging.dart';
-import 'package:provider/provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
   LoggerConfig.intiLogger();
   await initLocator();

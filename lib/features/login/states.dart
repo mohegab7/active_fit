@@ -9,6 +9,19 @@ class LoginSuccessState extends LoginStates {
 
   // LoginSuccessState(this.uId);
 }
+class LoginGetUserLoadingState extends LoginStates {}
+class LoginGetUserSuccessState extends LoginStates {
+  // final String uId;
+
+  // LoginGetUserSuccessState(this.uId);
+}
+class LoginGetUserErrorState extends LoginStates {
+  LoginGetUserErrorState(this.error);
+
+  final String error;
+}
+
+
 
 class LoginWithGoogleSuccessState extends LoginStates {
   // final String uId;
@@ -23,3 +36,7 @@ class LoginErrorState extends LoginStates {
 }
 
 class ChangePasswordState extends LoginStates {}
+
+class LoginWithFacebookLoadingState extends LoginStates {}
+
+class LoginWithFacebookSuccessState extends LoginStates {}

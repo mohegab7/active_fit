@@ -44,9 +44,11 @@ class LoginScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
-                        const SizedBox(
-                          height: 160.0,
-                        ),
+                       Center(
+                         child: Image.asset('assets/icon/active_banner_top.png',height: 200,
+                         width: 200
+                         ,),
+                       ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 15),
@@ -239,16 +241,16 @@ class LoginScreen extends StatelessWidget {
                           // crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(
-                              icon: FaIcon(
-                                FontAwesomeIcons.facebook,
-                                color: Colors.blue,
-                                size: 40,
-                              ),
-                              onPressed: () {
-                              // LoginCuibt.get(context).signInWithFacebook();
-                              },
-                            ),
+                            // IconButton(
+                            //   icon: FaIcon(
+                            //     FontAwesomeIcons.facebook,
+                            //     color: Colors.blue,
+                            //     size: 40,
+                            //   ),
+                            //   onPressed: () {
+                            //   LoginCuibt.get(context).loginwithfacbook();
+                            //   },
+                            // ),
                             const SizedBox(
                               width: 20,
                             ),
@@ -287,6 +289,9 @@ class LoginScreen extends StatelessWidget {
                 (route) => false,
               );
             }
+              // );
+            // }
+            
             if (state is LoginWithGoogleSuccessState) {
               // CacheHelper.saveData(key: 'uId', value: state).then((value) {
               Navigator.pushAndRemoveUntil(
@@ -303,3 +308,12 @@ class LoginScreen extends StatelessWidget {
         ));
   }
 }
+// CacheHelper.saveData(key: 'uId', value: state).then((value) {
+            //   Navigator.pushAndRemoveUntil(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => MainScreen(),
+            //     ),
+            //     (route) => false,
+            //   );
+            // }
